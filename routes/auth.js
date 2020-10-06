@@ -15,7 +15,7 @@ router.post('/auth', (req, res) => {
                         res.statusCode = 200;
                         res.setHeader('Content-type','application/json');
                         const token = jwt.sign({_id:user._id},process.env.TOKEN_SECRET);
-                        res.header('auth-token',token)
+                        //res.header('auth-token',token)
                         res.json({
                             _token: token,
                             _user:user
@@ -36,7 +36,7 @@ router.post('/auth', (req, res) => {
                 res.statusCode = 200;
                 res.setHeader('Content-type','application/json');
                 const token = jwt.sign({_id:user._id},process.env.TOKEN_SECRET);
-                res.header('auth-token',token)
+                //res.header('auth-token',token)
                 res.json({
                     _token: token,
                     _user:user

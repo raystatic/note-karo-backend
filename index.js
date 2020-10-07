@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 
 const authRouter = require('./routes/auth');
 const userRoute = require('./routes/user');
+const notesRouter = require('./routes/notes');
 
 dotenv.config();
 
@@ -17,8 +18,9 @@ mongoose.connect(
 app.use(express.json());
 
 
-app.use('/apiV1/',authRouter);
-app.use('/apiV1/user', userRoute);
+app.use('/api/v1/',authRouter);
+app.use('/api/v1/user', userRoute);
+app.use('/api/v1/notes', notesRouter);
 
 
 

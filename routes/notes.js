@@ -22,14 +22,14 @@ router.route('/')
         res.statusCode = 400
         res.json({
             success:false,
-            error:err
+            message:err
         })
     })
     .catch((err) => {
         res.statusCode = 400
         res.json({
             success:false,
-            error:err
+            message:err
         })
     })
 })
@@ -47,14 +47,14 @@ router.route('/')
             res.statusCode = 400
             res.json({
                 success:false,
-                error:err
+                message:err
             })
         })
         .catch((err) => {
             res.statusCode = 400
             res.json({
                 success:false,
-                error:err
+                message:err
             })
         })
 })
@@ -65,7 +65,8 @@ router.route('/')
 
 
     Notes.findOneAndUpdate({
-        _id: noteId
+        _id: noteId,
+        author:_note.author
     }, {
         title: _note.title,
         color:_note.color,
@@ -73,25 +74,70 @@ router.route('/')
         author:_note.author
     })
     .then((note) => {
-        res.statusCode = 200;
-        res.json({
-            success:true,
-            _note:note
-        });
+        console.log('note 🏚',note)
+        if(note){
+            note = _note;
+            res.statusCode = 200;
+            res.json({
+                success:true,
+                _note:note
+            });
+        }else{
+            res.statusCode = 401;
+            res.json({
+                success:false,
+                message:'No note found with given user and noteId'
+            })
+        }
     }, (err) => {
         res.statusCode = 400
         res.json({
             success:false,
-            error:err
+            message:err
         })
     })
     .catch((err) => {
         res.statusCode = 400
         res.json({
             success:false,
-            error:err
+            message:err
         })
     })
+
+})
+.delete(verifyToken, (req, res) => {
+    const noteId = req.body.noteId;
+    const userId = req.user._id;
+
+    Notes.findById(noteId)
+        .then((note) => {
+            if(note.author === userId){
+                note.remove()
+                res.statusCode = 200;
+                res.json({
+                    success:true
+                });
+            }else{
+                res.statusCode = 401;
+                res.json({
+                    success:false,
+                    message:'Invalid user'
+                })
+            }
+        }, (err) => {
+            res.statusCode = 400;
+            res.json({
+                success:false,
+                message:err
+            })  
+        })
+        .catch((err) => {
+            res.statusCode = 400;
+            res.json({
+                success:false,
+                message:err
+            });
+        })
 
 })
 

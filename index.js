@@ -10,7 +10,7 @@ const notesRouter = require('./routes/notes');
 dotenv.config();
 
 mongoose.connect(
-    'mongodb+srv://admin:H1WJhMqfTqdxN4Vj@cluster0.41wab.mongodb.net/note_karo_db?retryWrites=true&w=majority',
+    process.env.DB_CONNECT,
     {
         useNewUrlParser:true,
         useCreateIndex:true,

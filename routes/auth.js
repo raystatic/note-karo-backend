@@ -26,12 +26,14 @@ router.post('/auth', (req, res) => {
                             _user:user
                         });
                     }, (err) => {
+                        console.log('auth-debug: create error',err);
                         res.statusCode = 400;
                         res.json({
                             error:err
                         });
                     })
                     .catch((err) => {
+                        console.log('auth-debug: create exception',err);
                         res.statusCode = 400;
                         res.json({
                             error:err

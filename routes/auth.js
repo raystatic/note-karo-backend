@@ -7,6 +7,7 @@ router.use(bodyParser.json());
 
 router.post('/auth', (req, res) => {
 
+    console.log('auth-debug: enter',req.body);
     User.findOne({email:req.body.email})
         .then((user) => {
             if(user === null){
@@ -16,6 +17,7 @@ router.post('/auth', (req, res) => {
                         res.setHeader('Content-type','application/json');
                         const token = jwt.sign({_id:user._id},process.env.TOKEN_SECRET);
                         //res.header('auth-token',token)
+                        console.log('auth-debug: token',token);
                         res.json({
                             _token: token,
                             _user:user
@@ -44,12 +46,14 @@ router.post('/auth', (req, res) => {
             }
         }, (err) => {
             res.statusCode = 400;
+            console.log('auth-debug: error',err);
             res.json({
                 error:err
             });
         })
         .catch((err) => {
             res.statusCode = 400;
+            console.log('auth-debug: exception',err);
             res.json({
                 error:err
             });

@@ -10,6 +10,9 @@ router.post('/auth', (req, res) => {
     console.log('auth-debug: enter',req.body);
     User.findOne({email:req.body.email})
         .then((user) => {
+
+            console.log('auth-debug: user fetched',user);
+
             if(user === null){
                 User.create(req.body)
                     .then((user) => {

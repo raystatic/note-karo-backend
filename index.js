@@ -29,4 +29,4 @@ app.get('/', (req, res) => {
 
 
 
-app.listen(3000, () => console.log('server up and running'))
+app.listen(process.env.PORT || 3000, () => console.log('server up and running'))

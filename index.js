@@ -10,14 +10,16 @@ const notesRouter = require('./routes/notes');
 dotenv.config();
 
 mongoose.connect(
-    'mongodb+srv://admin:H1WJhMqfTqdxN4Vj@cluster0.41wab.mongodb.net/<dbname>?retryWrites=true&w=majority',
+    'mongodb+srv://admin:H1WJhMqfTqdxN4Vj@cluster0.41wab.mongodb.net/note_karo_db?retryWrites=true&w=majority',
     {
         useNewUrlParser:true,
         useCreateIndex:true,
         useUnifiedTopology:true
-    },
-    () => console.log('connected to DB!')
-);
+    }
+).then(
+    () => {console.log('connected to DB!')},
+    err => {console.log('error in connection: ',err)}
+)
 
 app.use(express.json());
 

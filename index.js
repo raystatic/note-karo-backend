@@ -22,6 +22,11 @@ app.use('/api/v1/',authRouter);
 app.use('/api/v1/user', userRoute);
 app.use('/api/v1/notes', notesRouter);
 
+app.get('/', (req, res) => {
+    res.statusCode = 200;
+    res.send('Welcome to note-karo backend');
+})
+
 
 
 app.listen(3000, () => console.log('server up and running'))

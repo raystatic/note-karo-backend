@@ -7,17 +7,6 @@ router.use(bodyParser.json());
 
 router.post('/auth', (req, res) => {
 
-    console.log('auth-debug: enter',req.body);
-
-    User.find((err, data) => {
-        if(data){
-            console.log('all users data', data);
-        }else{
-            console.log('all users err', err);
-        }
-        
-    })
-
     User.findOne({email:req.body.email},(err, user) => {
 
         console.log('auth-debug: fetched user',user);

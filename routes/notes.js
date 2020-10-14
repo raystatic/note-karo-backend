@@ -76,7 +76,6 @@ router.route('/')
     .then((note) => {
         console.log('note 🏚',note)
         if(note){
-            note = _note;
             res.statusCode = 200;
             res.json({
                 success:true,

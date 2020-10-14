@@ -81,8 +81,6 @@ router.route('/')
             note.text = _note.text
             note.title = _note.title
             note.author = _note.author
-            note.createdAt = _note.createdAt
-            note.updatedAt = _note.updatedAt
             note.__v = _note.__v
             res.statusCode = 200;
             res.json({

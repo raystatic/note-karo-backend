@@ -76,6 +76,14 @@ router.route('/')
     .then((note) => {
         console.log('note 🏚',note)
         if(note){
+            note._id = _note._id
+            note.color = _note.color
+            note.text = _note.text
+            note.title = _note.title
+            note.author = _note.author
+            note.createdAt = _note.createdAt
+            note.updatedAt = _note.updatedAt
+            note.__v = _note.__v
             res.statusCode = 200;
             res.json({
                 success:true,

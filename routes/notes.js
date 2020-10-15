@@ -76,7 +76,7 @@ router.route('/')
     .then((note) => {
         console.log('note 🏚',note)
         if(note){
-            note._id = _note._id
+            note._id = noteId
             note.color = _note.color
             note.text = _note.text
             note.title = _note.title

@@ -30,7 +30,7 @@ app.use('/api/v1/notes', notesRouter);
 
 app.get('/', (req, res) => {
     res.statusCode = 200;
-    res.send('Welcome to note-karo backend');
+    res.send('Welcome to note-karo backend!!');
 })
 
 

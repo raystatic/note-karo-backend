@@ -33,10 +33,10 @@ app.get('/', (req, res) => {
     res.send('Welcome to note-karo backend!!');
 })
 
-app.get('/privacy-policy', (req, res) => {
-    res.statusCode = 200;
-    res.send('This is the privacy policy page');
-})
+// app.get('/privacy-policy', (req, res) => {
+//     res.statusCode = 200;
+//     res.send('This is the privacy policy page');
+// })
 
 
 
